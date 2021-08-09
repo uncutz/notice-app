@@ -15,5 +15,3 @@ $ ./.docker/build.sh
 ```bash
 $ ./.docker/start.sh
 ```
-
-test
