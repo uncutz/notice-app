@@ -2,26 +2,26 @@
 
 namespace uncutz\NoticeApp;
 
-final class Response
+final class HttpResponse
 {
     /** @var int */
     private $statusCode;
 
-    /** @var string[] */
-    private $header;
+    /** @var array<string, string> */
+    private $headers;
 
     /** @var string */
     private $body;
 
     /**
      * @param int $statusCode
-     * @param string[] $header
+     * @param array<string, string> $headers
      * @param string $body
      */
-    public function __construct(int $statusCode, array $header, string $body)
+    public function __construct(int $statusCode, array $headers, string $body)
     {
         $this->statusCode = $statusCode;
-        $this->header = $header;
+        $this->headers = $headers;
         $this->body = $body;
     }
 
@@ -34,11 +34,11 @@ final class Response
     }
 
     /**
-     * @return string[]
+     * @return array<string, string>
      */
-    public function getHeader(): array
+    public function getHeaders(): array
     {
-        return $this->header;
+        return $this->headers;
     }
 
     /**

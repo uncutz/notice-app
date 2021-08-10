@@ -1,9 +1,7 @@
-export default function Store()
-{
+export default function Store() {
     const localStorage = window.localStorage;
 
-    if ( !localStorage)
-    {
+    if (!localStorage) {
         throw new Error('local storage not available')
     }
 
@@ -13,6 +11,14 @@ export default function Store()
      */
     this.setItem = (key, value) => {
         localStorage.setItem(key, value);
+
+        fetch('/api/notices.php', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: value
+        });
     }
 
     /**
@@ -20,6 +26,13 @@ export default function Store()
      * @return {string}
      */
     this.getItem = key => {
+
+        fetch('/api/notices.php')
+            .then(response => response.json())
+            .then(function (response) {
+                console.log(response);
+            });
+
         return localStorage.getItem(key);
     }
 }
