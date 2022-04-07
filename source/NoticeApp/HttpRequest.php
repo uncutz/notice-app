@@ -3,11 +3,13 @@
 namespace uncutz\NoticeApp;
 
 
+use Fig\Http\Message\RequestMethodInterface;
+
 final class HttpRequest
 {
     public function getMethod(): string
     {
-        return strtoupper($_SERVER['REQUEST_METHOD'] ?? 'GET');
+        return strtoupper($_SERVER['REQUEST_METHOD'] ?? 'GET'); //wenn die Request Methode nicht festgelegt ist, dann ist sie GET
     }
 
     /**

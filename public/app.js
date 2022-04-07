@@ -2,16 +2,15 @@
 import NoteComponent from "./app/note.js";
 import NoteListComponent from "./app/notelist.js";
 import Store from "./app/store.js";
-import notelist from "./app/notelist.js";
 
 const store = new Store();
 
 function App() {
 
     //Datenteil: Instanziieren eines Objekts mit Anfangswerten
-    this.run = function () {
+    this.run = async function () {
 
-        const json = store.getItem('notes');
+        const json = await store.getItem('notes');
         let list;
         if (json) {
             list = NoteListComponent.NoteList.fromJSON(json);
